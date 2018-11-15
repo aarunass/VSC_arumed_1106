@@ -34,10 +34,10 @@ def zaidimas(zodis_kuri_reikia_atspeti):
     pasleptas_zodis = "_" * len(zodis_kuri_reikia_atspeti)
     print pasleptas_zodis
     kiek_kartu_suklys = input("kiek kartu nori suklysti? nuo 3 iki 6 ")
-    if kiek_kartu_suklys < 3 and kiek_kartu_suklys < 6:
+    while kiek_kartu_suklys < 3 and kiek_kartu_suklys < 6:
         kiek_kartu_suklys = input("bloga reiksme, ivesk nuo 3 iki 6 ")
-    else:
-        print HANGMANPICS[kiek_kartu_suklys]
+    print kiek_kartu_suklys
+    print HANGMANPICS[6-kiek_kartu_suklys]
     while zodis_neatspetas:
         if suklydimu_kartai == kiek_kartu_suklys:
             print "Game over"
@@ -68,8 +68,19 @@ def zaidimas(zodis_kuri_reikia_atspeti):
             else:
                 print "rades nera"
                 suklydimu_kartai = suklydimu_kartai + 1
-                paveikslelis = kiek_kartu_suklys + suklydimu_kartai
+                print suklydimu_kartai, "kiek kartu suklydo"
+                print kiek_kartu_suklys, "kiek karto nosi suklysti"
+                paveikslelis = 6 - kiek_kartu_suklys + suklydimu_kartai
+
                 print HANGMANPICS[paveikslelis]
+                if kiek_kartu_suklys == suklydimu_kartai:
+                    print "Game over"
+                    kartojimas = raw_input("Ar noresi kartoti zaidima? y/n")
+                    if kartojimas == "y":
+                        zodis_kuri_reikia_atspeti = lygio_nustatymas()
+                        zaidimas(zodis_kuri_reikia_atspeti)
+                    else:
+                        quit()
             if pasleptas_zodis == zodis_kuri_reikia_atspeti:
                 print "zaidimas baigtas"
                 kartojimas = raw_input("Ar noresi kartoti zaidima? y/n")
