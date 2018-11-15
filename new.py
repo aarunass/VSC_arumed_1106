@@ -1,5 +1,9 @@
 
 import random
+from ascii import *
+
+
+
 
 praeitas_ilgis = 0
 file_obj = open("zodziu_sarasas.txt", "r")
@@ -29,7 +33,8 @@ def zaidimas(zodis_kuri_reikia_atspeti):
     leidimas_suklysti = 1
     pasleptas_zodis = "_" * len(zodis_kuri_reikia_atspeti)
     print pasleptas_zodis
-    kiek_kartu_suklys = input("kiek kartu nori suklysti? ")
+    kiek_kartu_suklys = input("kiek kartu nori suklysti? nuo 3 iki 6 ")
+    print HANGMANPICS[kiek_kartu_suklys]
     while zodis_neatspetas:
         if suklydimu_kartai == kiek_kartu_suklys:
             print "Game over"
@@ -49,6 +54,7 @@ def zaidimas(zodis_kuri_reikia_atspeti):
                 if i == raide_kuria_reikia_atspeti and leidimas_suklysti == 1:
                     print "suklydai! raide {} jau spejai, si karta dovanosim".format(raide_kuria_reikia_atspeti)
                     suklydimu_kartai = suklydimu_kartai - 1
+                    leidimas_suklysti = leidimas_suklysti - 1
             if raide_kuria_reikia_atspeti in zodis_kuri_reikia_atspeti:
                 paslepto_zodzio_listas = list(pasleptas_zodis)
                 for index, raide in enumerate(zodis_kuri_reikia_atspeti):
@@ -59,6 +65,8 @@ def zaidimas(zodis_kuri_reikia_atspeti):
             else:
                 print "rades nera"
                 suklydimu_kartai = suklydimu_kartai + 1
+                paveikslelis = kiek_kartu_suklys + suklydimu_kartai
+                print HANGMANPICS[paveikslelis]
             if pasleptas_zodis == zodis_kuri_reikia_atspeti:
                 print "zaidimas baigtas"
                 kartojimas = raw_input("Ar noresi kartoti zaidima? y/n")
