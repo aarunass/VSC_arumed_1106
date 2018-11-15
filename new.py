@@ -15,7 +15,13 @@ for zodis in file_obj.readlines():
 
 def lygio_nustatymas():
     file_obj = open("zodziu_sarasas.txt", "r")
-    lygis = input("ivesk zaidimo lygi 2-{} ".format(praeitas_ilgis))
+    lygis = 0
+    a = True
+    while a:
+        if 2 <= lygis <= praeitas_ilgis:
+            a = False
+        else:
+            lygis = input("ivesk zaidimo lygi 2-{} ".format(praeitas_ilgis))
     zodziu_sarasas = []
     for zodis in file_obj.readlines():
         zodzio_ilgis = len(zodis[:-1])
@@ -33,8 +39,8 @@ def zaidimas(zodis_kuri_reikia_atspeti):
     leidimas_suklysti = 1
     pasleptas_zodis = "_" * len(zodis_kuri_reikia_atspeti)
     print pasleptas_zodis
-    kiek_kartu_suklys = 0
     a = True
+    kiek_kartu_suklys = 0
     while a:
         if 3 <= kiek_kartu_suklys <= 6:
             a = False
